@@ -34,7 +34,7 @@ public class Aritmetica {
 		}
 		return result;
 			
-	}
+	} 
 	
 	public static Imagem substracao(Imagem a, Imagem b){
 		Imagem result = new Imagem(Math.max(a.getW(), b.getW()), Math.max(a.getH(), b.getH()));
