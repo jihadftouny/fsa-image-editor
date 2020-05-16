@@ -1,5 +1,8 @@
 package br.fsa.pontuais;
 
+import static br.fsa.utils.Utils.red;
+import static br.fsa.utils.Utils.map;
+
 import br.fsa.utils.Imagem;
 
 public class Pontuais {
@@ -83,6 +86,37 @@ public class Pontuais {
 		}
 		return result;
 	}
+	
+	public static Imagem histogram(Imagem a) {
+		Imagem result = new Imagem(256, 150);
+		int[] cor = new int[256];
+		int max = 0;
+		int linhaCor = 255 << 16 | 255 << 8 | 255;
+		
+		for(int j = 0; j < a.getH(); j++) {
+			for(int i = 0; i < a.getW(); i++) {
+				
+				// Somando 1 na posicao referente a cor do pixel lido
+				int pixel = red(a.getP(i, j));
+				cor[pixel]++;
+				
+				// Condicao para pegar o maior valor do vetor cor[pixel]
+				if(cor[pixel] > max) {
+					max = cor[pixel];
+				}
+				
+				// Conjunto de lacos para plotar o histograma
+				for(int x = 0; x < result.getW(); x++) {
+					int mapVar = map(cor[x], max, 150);
+					result.setP(x, mapVar, linhaCor); 
+					
+					for(int y = mapVar; y < result.getH(); y++) {
+						result.setP(x, y, linhaCor);
+					}
+				}
+				
+			}
+		}
+		return result;
+	}
 }
-// 00000000 00000000 00000000
-//    R         G        B
