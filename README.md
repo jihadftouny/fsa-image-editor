@@ -25,8 +25,8 @@ Ferramenta feita em Java para tratamento de imagens, a partir de operações e f
 - Cinza NTSC
 - Cinza HDTV
 - Cinza HDR
-- Histograma (Comming soon)
-- Threshold (Comming soon)
+- Histograma
+- Threshold
 
 ## Filtros
 - Media 4
