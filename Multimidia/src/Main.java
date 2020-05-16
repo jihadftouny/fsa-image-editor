@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import br.fsa.operacoes.Geometricas;
+import br.fsa.pontuais.Pontuais;
 import br.fsa.utils.Imagem;
 public class Main {
 
@@ -14,8 +15,8 @@ public class Main {
 		Imagem a = null;
 		Imagem b = null;
 		try {
-			a = new Imagem(new File("/home/user/Imagens/liliana.jpg"));
-			b = Geometricas.translacao(a, 20, 20);
+			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\lenna.png"));
+			b = Pontuais.cinzaMedia(a);
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
 		}
