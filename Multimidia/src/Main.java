@@ -24,7 +24,7 @@ public class Main {
 		Imagem b = null;
 		try {
 			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\sonnet_lena.png"));
-			b = Pontuais.threshold(a, 125);
+			b = Ex1.thresholdAtv(a);
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
 		}
