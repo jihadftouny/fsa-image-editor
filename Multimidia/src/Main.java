@@ -25,7 +25,7 @@ public class Main {
 		Imagem b = null;
 		try {
 			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\lenna.png"));
-			b = Ex1.histogramAtv(a);
+			b = Filtros.mediana(a, 1);
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
 		}

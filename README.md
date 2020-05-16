@@ -32,7 +32,7 @@ Ferramenta feita em Java para tratamento de imagens, a partir de operações e f
 - Media 4
 - Media
 - Mediana 4 (Comming soon)
-- Mediana (Comming soon)
+- Mediana 
 - Roberts Cross (Comming soon)
 - Sobel Operator (Comming soon)
 - Convolução (Comming soon)

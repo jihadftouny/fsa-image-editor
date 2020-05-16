@@ -4,6 +4,7 @@ import br.fsa.utils.Imagem;
 import static br.fsa.utils.Utils.red;
 import static br.fsa.utils.Utils.green;
 import static br.fsa.utils.Utils.blue;
+import java.util.Arrays;
 
 public class Filtros {
 	
@@ -72,10 +73,34 @@ public class Filtros {
 	}
 	
 	public static Imagem mediana(Imagem a, int r) {
-		Imagem result = null;
+		Imagem result = new Imagem(a.getW(), a.getH());
+		
 		for(int j = 0; j < a.getH(); j++) {
 			for(int i = 0; i < a.getW(); i++) {
 				
+				int[] acumR = new int[((2*r+1) * (2*r+1))];
+				int[] acumG = new int[((2*r+1) * (2*r+1))];
+				int[] acumB = new int[((2*r+1) * (2*r+1))];
+				int index = 0;
+
+				for(int y = -r; y <= r; y++) {
+					for(int x = -r; x <= r; x++) {
+						acumR[index] = red(a.getP(i + x, j + y));
+						acumG[index] = green(a.getP(i + x, j + y));
+						acumB[index] = blue(a.getP(i + x, j + y));
+						index++;
+					}
+				}
+				
+				Arrays.sort(acumR);
+				Arrays.sort(acumG);
+				Arrays.sort(acumB);
+				
+				int newR = acumR[Math.round(r/2)];
+				int newG = acumR[Math.round(r/2)];
+				int newB = acumR[Math.round(r/2)];
+				
+				result.setP(i, j, newR << 16 | newG << 8 | newB);
 				//for x em função do raio 
 				//for y em função do raio
 					//Guardar valores de r, g e b
