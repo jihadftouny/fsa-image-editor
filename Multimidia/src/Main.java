@@ -1,3 +1,4 @@
+// author: kana
 import java.io.File;
 import java.io.IOException;
 
@@ -23,8 +24,8 @@ public class Main {
 		Imagem a = null;
 		Imagem b = null;
 		try {
-			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\sonnet_lena.png"));
-			b = Ex1.thresholdAtv(a);
+			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\lenna.png"));
+			b = Ex1.histogramAtv(a);
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
 		}

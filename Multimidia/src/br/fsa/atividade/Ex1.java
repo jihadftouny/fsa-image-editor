@@ -37,10 +37,45 @@ public class Ex1 {
 		return result;
 	}
 	
+	public static Imagem histogramAtv(Imagem a) {
+		Imagem result = new Imagem(a.getW(), a.getH());
+		int[] cor = new int[256];
+		int[] cdf = new int[256];
+		int[] eql = new int[256];
+		float cdfMin = 255;
+		
+		for(int j = 0; j < a.getH(); j++) {
+			for(int i = 0; i < a.getW(); i++) {
+				int pixel = red(a.getP(i, j));
+				cor[pixel]++;
+			}
+		}
+		
+		cdf[0] = cor[0];
+		for(int x = 1; x < cor.length; x++) {
+			cdf[x] = cdf[x-1] + cor[x];
+		}
+		
+		for(int x = 0; x < cor.length; x++) {
+			if(cor[x] > 0) {
+				cdfMin = x;
+			}
+		}
+		
+		for(int x = 0; x < 256; x++) {
+			eql[x] = Math.round(((cdf[x]-cdfMin) / (a.getW()*a.getH()-cdfMin)) * 255);
+		}
+		
+		for(int j = 0; j < a.getH(); j++) {
+			for(int i = 0; i < a.getW(); i++) {
+				int pixel = red(a.getP(i, j));
+				result.setP(i, j, eql[pixel] << 16 | eql[pixel] << 8 | eql[pixel]);
+			}
+		}
+
+		return result;
+	}
+	
+	// round( 
+
 }
-
-
-// percorrer vetor pra ver qual o máximo
-// valor-0/max-0 = y-150/0-150
-// y= -150*valor/max + 150
-
