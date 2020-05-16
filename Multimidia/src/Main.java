@@ -3,6 +3,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
+import br.fsa.atividade.Ex1;
 import br.fsa.filtros.Filtros;
 import br.fsa.operacoes.Geometricas;
 import br.fsa.pontuais.Pontuais;
@@ -23,7 +24,7 @@ public class Main {
 		Imagem b = null;
 		try {
 			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\lenna.png"));
-			b = Filtros.media(a, 0);
+			b = Ex1.thresholdAtv(a, 0);
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
 		}
