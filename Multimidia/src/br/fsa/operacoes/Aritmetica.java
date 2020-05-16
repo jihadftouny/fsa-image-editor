@@ -19,7 +19,7 @@ public class Aritmetica {
 				int gb = corb >> 8 & 0xff;
 				int bb = corb & 0xff;
 				
-				int resR = (ra + rb)>255 ? 255:ra+rb; //if ternário
+				int resR = (ra + rb)>255 ? 255:ra+rb; //if ternario
 				int resG = ga + gb;
 				if(resG > 255) 	//if normal
 					resG = 255;
@@ -135,22 +135,19 @@ public class Aritmetica {
 		for(int j = 0; j < result.getH(); j++) {
 			for(int i = 0; i < result.getW(); i++) {
 				
-				//separa os canasi de a
 				int cora = a.getP(i,j);
 				int ra = cora >> 16 & 0xff;
 				int ga = cora >> 8 & 0xff;
 				int ba = cora & 0xff;
 				
-				//faz propriamente a operação de soma
-				int resR = ra + r>255?255:ra+r; //if ternário
+				int resR = ra + r>255?255:ra+r;
 				int resG = ga + g;
-				if(resG > 255) 	//if normal
+				if(resG > 255)
 					resG = 255;
 				int resB = ba + b;
 				if(resB > 255)
 					resB = 255;
 				
-				//junta os canais no resultado
 				int corResult = resR << 16 | resG << 8 | resB;
 				
 				result.setP(i, j, corResult);
@@ -190,7 +187,6 @@ public class Aritmetica {
 				result.setP(i, j, corResult);
 			}
 		}
-		
 		
 		return result;
 	}	

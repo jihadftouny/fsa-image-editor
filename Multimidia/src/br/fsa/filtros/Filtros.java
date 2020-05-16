@@ -4,21 +4,38 @@ import br.fsa.utils.Imagem;
 import static br.fsa.utils.Utils.red;
 import static br.fsa.utils.Utils.green;
 import static br.fsa.utils.Utils.blue;
+
 public class Filtros {
 	
-	public static Imagem media4(Imagem a) {
+	public static Imagem media4(Imagem a){
 		Imagem result = new Imagem(a.getW(), a.getH());
 		
 		for(int j = 0; j < a.getH(); j++) {
 			for(int i = 0; i < a.getW(); i++) {
-				int acumR = red(a.getP(i,j-1)) + red(a.getP(i, j)) + red(a.getP(i, j+1)) + red(a.getP(i-1, j)) + red(a.getP(i+1, j));
-				int acumG = green(a.getP(i,j-1)) + green(a.getP(i, j)) + green(a.getP(i, j+1)) + green(a.getP(i-1, j)) + green(a.getP(i+1, j));
-				int acumB = blue(a.getP(i,j-1)) + blue(a.getP(i, j)) + blue(a.getP(i, j+1)) + blue(a.getP(i-1, j)) + blue(a.getP(i+1, j));
-				acumR /= 5;
-				acumG /= 5;
-				acumB /= 5;
 				
-				result.setP(i, j, acumR<<16|acumG<<8|acumB);
+				int acumR = red(a.getP(i, j - 1)) + // Pixel acima
+							red(a.getP(i, j)) +		// Pixel central
+							red(a.getP(i, j + 1)) + // Pixel abaixo
+							red(a.getP(i - 1, j)) +	// Pixel a esquerda
+							red(a.getP(i + 1, j));	// Pixel a direita
+				
+				int acumG = green(a.getP(i, j - 1)) + // Pixel acima
+							green(a.getP(i, j)) +	  // Pixel central
+							green(a.getP(i, j + 1)) + // Pixel abaixo
+							green(a.getP(i - 1, j)) + // Pixel a esquerda
+							green(a.getP(i + 1, j));  // Pixel a direita
+				
+				int acumB = blue(a.getP(i, j - 1)) + // Pixel acima
+							blue(a.getP(i, j)) +	 // Pixel central
+							blue(a.getP(i, j + 1)) + // Pixel abaixo
+							blue(a.getP(i - 1, j)) + // Pixel a esquerda
+							blue(a.getP(i + 1, j));  // Pixel a direita
+				
+				acumR = acumR / 5;
+				acumG = acumG / 5;
+				acumB = acumB / 5;
+				
+				result.setP(i, j, acumR << 16 | acumG << 8 | acumB);
 			}
 		}
 		
@@ -26,15 +43,28 @@ public class Filtros {
 	}
 	
 	public static Imagem media(Imagem a, int r) {
-		Imagem result = null;
+		Imagem result = new Imagem(a.getW(), a.getH());
+			
 		for(int j = 0; j < a.getH(); j++) {
 			for(int i = 0; i < a.getW(); i++) {
 				
-				//for x em função do raio 
-				//for y em função do raio
-					//Acumular média r, g e b
-					//dividir pelo total
-					//colocar na resultante i, j
+				int acumR = 0;
+				int acumG = 0;
+				int acumB = 0;
+				
+				for(int y = -r; y <= r; y++) {
+					for(int x = -r; x <= r; x++) {
+						acumR = acumR + red(a.getP(i + x, j + y));
+						acumG = acumG + green(a.getP(i + x, j + y));
+						acumB = acumB + blue(a.getP(i + x, j + y));
+					}
+				}
+				
+				acumR = acumR / ((2*r+1) * (2*r+1)); // (2r+1)²
+				acumG = acumG / ((2*r+1) * (2*r+1));
+				acumB = acumB / ((2*r+1) * (2*r+1));
+				
+				result.setP(i, j, acumR << 16 | acumG << 8 | acumB);
 			}
 		}
 		
@@ -57,6 +87,13 @@ public class Filtros {
 		
 		return result;
 	}
+}
+
+
+
+/*
+	
+	
 	
 	public static Imagem convolve(Imagem a, Kernel k) {
 		Imagem result = null;
@@ -88,4 +125,5 @@ class Kernel{
 		this.y = y;
 	 
 	}
-}
+
+*/
