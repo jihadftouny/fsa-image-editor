@@ -119,4 +119,23 @@ public class Pontuais {
 		}
 		return result;
 	}
+	
+	public static Imagem threshold(Imagem a, int limiar) {
+		Imagem result = new Imagem(a.getW(), a.getH());
+
+		for(int j = 0; j < a.getH(); j++) {
+			for(int i = 0; i < a.getW(); i++) {
+				
+				int pixel = red(a.getP(i, j));
+				if(pixel <= limiar) {
+					pixel = 0 << 16 | 0 << 8 | 0;
+				}else {
+					pixel = 255 << 16 | 255 << 8 | 255;
+				}
+				
+				result.setP(i, j, pixel);
+			}
+		}
+		return result;
+	}
 }
