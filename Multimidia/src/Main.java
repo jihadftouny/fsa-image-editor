@@ -23,8 +23,8 @@ public class Main {
 		Imagem a = null;
 		Imagem b = null;
 		try {
-			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\lenna.png"));
-			b = Ex1.thresholdAtv(a, 0);
+			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\sonnet_lena.png"));
+			b = Ex1.thresholdAtv(a, 125);
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
 		}
