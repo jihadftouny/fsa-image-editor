@@ -50,7 +50,7 @@ public class Filtros {
 				
 				int acumR = 0;
 				int acumG = 0;
-				int acumB = 0;
+				int acumB = 0; 
 				
 				for(int y = -r; y <= r; y++) {
 					for(int x = -r; x <= r; x++) {
