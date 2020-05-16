@@ -87,17 +87,9 @@ public class Filtros {
 		
 		return result;
 	}
-}
-
-
-
-/*
-	
-	
 	
 	public static Imagem convolve(Imagem a, Kernel k) {
 		Imagem result = null;
-		
 		
 		return result;
 	}
@@ -110,11 +102,10 @@ public class Filtros {
 		Imagem result = convolve(a,k);
 		return result;
 	}
-	
 }
 
+
 class Kernel{
-	
 	float[][] k;
 	int x;
 	int y;
@@ -123,7 +114,5 @@ class Kernel{
 		k = new float[h][w];
 		this.x = x;
 		this.y = y;
-	 
 	}
-
-*/
+}
