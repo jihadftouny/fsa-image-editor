@@ -1,6 +1,6 @@
 # FSA Image Editor
 
-Ferramenta feita em Java para tratamento de imagens, a partir de operações e filtros.
+Ferramenta feita em Java para tratamento e edição de imagens, utilizando operações e filtros.
 
 ## Operações Aritméticas
 - Soma de Imagem/Cor
@@ -9,11 +9,11 @@ Ferramenta feita em Java para tratamento de imagens, a partir de operações e f
 - Divisão de Imagem/Cor
 - Blending
 
-## Operações Lógicas
+## Operações Lógicas (Bitwise)
 - AND
-- OR (Comming soon)
-- NOT (Comming soon)
-- XOR (Comming soon)
+- OR
+- XOR
+- NOT
 
 ## Operações Geométricas
 - Translação (Comming soon)
@@ -30,9 +30,9 @@ Ferramenta feita em Java para tratamento de imagens, a partir de operações e f
 
 ## Filtros
 - Media 4
-- Media
+- Media R
 - Mediana 4 (Comming soon)
-- Mediana 
+- Mediana R
 - Roberts Cross (Comming soon)
 - Sobel Operator (Comming soon)
 - Convolução (Comming soon)
