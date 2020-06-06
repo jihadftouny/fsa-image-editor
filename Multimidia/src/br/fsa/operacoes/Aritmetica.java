@@ -36,7 +36,7 @@ public class Aritmetica {
 			
 	} 
 	
-	public static Imagem substracao(Imagem a, Imagem b){
+	public static Imagem subtracao(Imagem a, Imagem b){
 		Imagem result = new Imagem(Math.max(a.getW(), b.getW()), Math.max(a.getH(), b.getH()));
 
 		for(int j = 0; j < result.getH(); j++){
@@ -147,6 +147,105 @@ public class Aritmetica {
 				int resB = ba + b;
 				if(resB > 255)
 					resB = 255;
+				
+				int corResult = resR << 16 | resG << 8 | resB;
+				
+				result.setP(i, j, corResult);
+				
+			}
+		}
+		
+		return result;	
+	}
+	
+	public static Imagem subtracao(Imagem a, int cor) {
+		Imagem result = new Imagem(a.getW(), a.getH());
+		int r = cor >> 16 & 0xff;
+		int g = cor >> 8 & 0xff;
+		int b = cor & 0xff;
+		for(int j = 0; j < result.getH(); j++) {
+			for(int i = 0; i < result.getW(); i++) {
+				
+				int cora = a.getP(i,j);
+				int ra = cora >> 16 & 0xff;
+				int ga = cora >> 8 & 0xff;
+				int ba = cora & 0xff;
+				
+				int resR = ra - r < 0 ? 0 : ra - r;
+				int resG = ga - g;
+				if(resG < 0)
+					resG = 0;
+				int resB = ba - b;
+				if(resB < 0)
+					resB = 0;
+				
+				int corResult = resR << 16 | resG << 8 | resB;
+				
+				result.setP(i, j, corResult);
+				
+			}
+		}
+		
+		return result;	
+	}
+	
+	public static Imagem multiplicacao(Imagem a, int cor) {
+		Imagem result = new Imagem(a.getW(), a.getH());
+		int r = cor >> 16 & 0xff;
+		int g = cor >> 8 & 0xff;
+		int b = cor & 0xff;
+		for(int j = 0; j < result.getH(); j++) {
+			for(int i = 0; i < result.getW(); i++) {
+				
+				int cora = a.getP(i,j);
+				int ra = cora >> 16 & 0xff;
+				int ga = cora >> 8 & 0xff;
+				int ba = cora & 0xff;
+				
+				int resR = ra * r > 255 ? 255 : ra * r;
+				int resG = ga * g;
+				if(resG > 255)
+					resG = 255;
+				int resB = ba * b;
+				if(resB > 255)
+					resB = 255;
+				
+				int corResult = resR << 16 | resG << 8 | resB;
+				
+				result.setP(i, j, corResult);
+				
+			}
+		}
+		
+		return result;	
+	}
+	
+	public static Imagem divisao(Imagem a, int cor) {
+		Imagem result = new Imagem(a.getW(), a.getH());
+		int r = cor >> 16 & 0xff;
+		int g = cor >> 8 & 0xff;
+		int b = cor & 0xff;
+		for(int j = 0; j < result.getH(); j++) {
+			for(int i = 0; i < result.getW(); i++) {
+				
+				int cora = a.getP(i,j);
+				int ra = cora >> 16 & 0xff;
+				int ga = cora >> 8 & 0xff;
+				int ba = cora & 0xff;
+				
+				int resR = 0;
+				int resG = 0;
+				int resB = 0;
+				
+				if(ra != 0 && r != 0) {
+					resR = ra / r;
+				}
+				if(ga != 0 && g != 0) {
+					resG = ga / g;
+				}
+				if(ba != 0 && b != 0) {
+					resB = ba / b;
+				}
 				
 				int corResult = resR << 16 | resG << 8 | resB;
 				

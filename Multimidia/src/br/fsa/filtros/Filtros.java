@@ -101,12 +101,6 @@ public class Filtros {
 				int newB = acumR[Math.round(r/2)];
 				
 				result.setP(i, j, newR << 16 | newG << 8 | newB);
-				//for x em função do raio 
-				//for y em função do raio
-					//Guardar valores de r, g e b
-					//Ordenar os valores guardados
-					//Pegar o do meio
-					//colocar na resultante i, j
 			}
 		}
 		
