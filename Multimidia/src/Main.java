@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import br.fsa.atividade.Ex1;
 import br.fsa.filtros.Filtros;
 import br.fsa.operacoes.Geometricas;
+import br.fsa.operacoes.Logica;
 import br.fsa.operacoes.Mascara;
 import br.fsa.pontuais.Pontuais;
 import br.fsa.utils.Imagem;
@@ -32,7 +33,7 @@ public class Main {
 		try {
 			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\lena.png"));
 			b = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\liliana.jpg"));
-			c = Mascara.burn(a, b);
+			c = Logica.not(a);
 
 		}catch(IOException ioe) {
 			ioe.printStackTrace();

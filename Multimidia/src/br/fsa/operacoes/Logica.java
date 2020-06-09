@@ -104,17 +104,10 @@ public class Logica {
 				
 				//Separa os canais de cor de A
 				int cora = a.getP(i, j);
-				int ra = cora >> 16 & 0xff;
-				int ga = cora >> 8 & 0xff;
-				int ba = cora & 0xff;
-				
-				//Pra cada canal faz ~Ra 
-				int resR = ~ra;
-				int resG = ~ga;
-				int resB = ~ba;
-				
+				cora = ~cora;
+
 				//Junta os resultados e salva o pixel na imagem resultante
-				int corR = resR << 16 | resG << 8 | resB;
+				int corR = cora;
 				result.setP(i, j, corR);
 			}
 		}
