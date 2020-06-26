@@ -16,8 +16,8 @@ Ferramenta feita em Java para tratamento e edição de imagens, utilizando opera
 - NOT
 
 ## Operações Geométricas
-- Translação (Comming soon)
-- Rotação (Comming soon)
+- Translação
+- Rotação
 - Escala (Comming soon)
 
 ## Operações Pontuais
