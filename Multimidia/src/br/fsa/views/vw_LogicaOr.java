@@ -21,6 +21,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
 import br.fsa.operacoes.Aritmetica;
+import br.fsa.operacoes.Logica;
 import br.fsa.utils.Imagem;
 
 import com.jgoodies.forms.layout.FormSpecs;
@@ -32,16 +33,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class vw_AritmeticaSubtracao extends JDialog {
+public class vw_LogicaOr extends JDialog {
 
-	public vw_AritmeticaSubtracao(ArrayList<JInternalFrame> frames) {
-		setTitle("Subtração");
+	public vw_LogicaOr(ArrayList<JInternalFrame> frames) {
+		setTitle("OR");
 
 		setResizable(false);
 		setBounds(100, 100, 455, 207);
 		getContentPane().setLayout(new MigLayout("", "[200][center][200]", "[33px][24px][24px][44.00px][43.00px]"));
 
-		JLabel lblIntro = new JLabel("Selecione as imagens que serão subtraídas");
+		JLabel lblIntro = new JLabel("Selecione as imagens que farão o OR");
 		lblIntro.setFont(new Font("Dialog", Font.PLAIN, 14));
 		lblIntro.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblIntro, "cell 0 0 3 1,grow");
@@ -51,7 +52,7 @@ public class vw_AritmeticaSubtracao extends JDialog {
 		cbb1.setToolTipText("Imagem 1");
 		getContentPane().add(cbb1, "cell 0 1 3 1,growx,aligny top");
 
-		JLabel lblOperacao = new JLabel("-");
+		JLabel lblOperacao = new JLabel("OR");
 		lblOperacao.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblOperacao.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblOperacao, "cell 0 2 3 1,growx,aligny top");
@@ -96,7 +97,7 @@ public class vw_AritmeticaSubtracao extends JDialog {
 					}
 					
 					if (imagem1 != null && imagem2 != null) {
-						Imagem result = Aritmetica.subtracao(imagem1, imagem2);
+						Imagem result = Logica.or(imagem1, imagem2);
 						
 						JDialog dialog = new JDialog();
 						

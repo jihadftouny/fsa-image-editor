@@ -103,6 +103,7 @@ public class vw_AritmeticaDivisao extends JDialog {
 						dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 						dialog.setBounds(0, 0, result.getW(), result.getH());
 						dialog.add(result);
+						dialog.setLocationRelativeTo(null);
 						dialog.setVisible(true);
 						dialog.setModal(true);
 						setVisible(false);

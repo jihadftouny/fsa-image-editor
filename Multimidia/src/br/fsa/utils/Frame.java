@@ -37,7 +37,12 @@ public class Frame extends JInternalFrame {
 		setIconifiable(true);
 		setMaximizable(true);
 		setVisible(true);
-		setBounds(0, 0, imagem.getW(), imagem.getH());
+		
+		if (imagem.getW() > 800 && imagem.getH() > 600) {
+			setBounds(0, 0, 800, 600);
+		} else {
+			setBounds(0, 0, imagem.getW(), imagem.getH());
+		}
 	}
 
 	public String getCaminho() {

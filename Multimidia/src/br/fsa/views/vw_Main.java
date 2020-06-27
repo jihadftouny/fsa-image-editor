@@ -235,7 +235,9 @@ public class vw_Main {
 
 				if (retorno == JFileChooser.APPROVE_OPTION) {
 					if (fileChooser.getSelectedFile().getAbsolutePath().endsWith(".jpg") ||
-					fileChooser.getSelectedFile().getAbsolutePath().endsWith(".png")) {
+					fileChooser.getSelectedFile().getAbsolutePath().endsWith(".JPG") ||
+					fileChooser.getSelectedFile().getAbsolutePath().endsWith(".png") ||
+					fileChooser.getSelectedFile().getAbsolutePath().endsWith(".PNG")) {
 
 						File file = fileChooser.getSelectedFile();
 						Frame frame = new Frame(file);
@@ -300,6 +302,146 @@ public class vw_Main {
 					
 					vw_AritmeticaDivisao divisao = new vw_AritmeticaDivisao(frames);
 					divisao.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnLogicaAnd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_LogicaAnd and = new vw_LogicaAnd(frames);
+					and.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnLogicaOr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_LogicaOr or = new vw_LogicaOr(frames);
+					or.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnLogicaXor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_LogicaXor xor = new vw_LogicaXor(frames);
+					xor.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnLogicaNot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_LogicaNot not = new vw_LogicaNot(frames);
+					not.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnPontuaisCinzamedio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_PontuaisCinzamedio cinzaMedio = new vw_PontuaisCinzamedio(frames);
+					cinzaMedio.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnPontuaisCinzantsc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_PontuaisCinzantsc cinzaNTSC = new vw_PontuaisCinzantsc(frames);
+					cinzaNTSC.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnPontuaisCinzahdr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_PontuaisCinzahdr cinzaHDR = new vw_PontuaisCinzahdr(frames);
+					cinzaHDR.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnPontuaisCinzahdtv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_PontuaisCinzahdtv cinzaHDTV = new vw_PontuaisCinzahdtv(frames);
+					cinzaHDTV.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnPontuaisHistograma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_PontuaisHistograma histograma = new vw_PontuaisHistograma(frames);
+					histograma.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnFiltrosMedia4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_FiltrosMedia4 media4 = new vw_FiltrosMedia4(frames);
+					media4.setVisible(true);
 				}else {
 					System.out.println("Abra pelo menos uma imagem antes!");
 				}
