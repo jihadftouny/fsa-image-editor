@@ -31,6 +31,7 @@ public class Frame extends JInternalFrame {
 
 		add(imagem);
 		setTitle(filename);
+		setName(caminho);
 		setResizable(true);
 		setClosable(true);
 		setIconifiable(true);

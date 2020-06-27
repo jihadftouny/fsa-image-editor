@@ -3,6 +3,7 @@ package br.fsa.views;
 import java.awt.EventQueue;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -25,6 +26,8 @@ import com.jgoodies.forms.layout.FormSpecs;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -86,11 +89,18 @@ public class vw_AritmeticaSoma extends JDialog {
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				for(int i = 0; i < frames.size(); i++) {
+
+				for (int i = 0; i < frames.size(); i++) {
 					if (cbb1.getSelectedItem() == frames.get(i).getTitle()) {
-//						JOptionPane.showMessageDialog(null, frames.get(i).getComponents());
-						System.out.println(frames.get(i).getComponent(i));
+
+						Imagem imagem1 = null;
+						
+						try {
+							imagem1 = new Imagem(new File(frames.get(i).getName()));
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						
 					}
 				}

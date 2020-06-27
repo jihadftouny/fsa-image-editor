@@ -55,3 +55,4 @@ public class Main {
 
 
 // Limiar (Threshold) - Determina um valor e se o pixel for menor que esse valor fica preto, se for maior, fica branco
+
