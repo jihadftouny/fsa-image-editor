@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -237,18 +238,8 @@ public class vw_Main {
 					fileChooser.getSelectedFile().getAbsolutePath().endsWith(".png")) {
 
 						File file = fileChooser.getSelectedFile();
-						String filename = file.getName();
-
-						JInternalFrame frame = new JInternalFrame(filename, true, true, true, true);
-						ImageIcon img = new ImageIcon(file.getPath());
-						JLabel lblImg = new JLabel(img);
-
-						frame.getContentPane().add(lblImg);
-						frame.setVisible(true);
+						Frame frame = new Frame(file);
 						mainDesktop.add(frame);
-
-						frame.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
-						lblImg.setBounds(0, 0, frame.getWidth(), frame.getHeight());
 
 					} else {
 
@@ -262,11 +253,14 @@ public class vw_Main {
 
 		mnAritmeticaSoma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				ArrayList<String> filenames = Frame.getFrameNames(mainDesktop.getAllFrames());
-				
-				vw_AritmeticaSoma soma = new vw_AritmeticaSoma(filenames);
-				soma.setVisible(true);
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_AritmeticaSoma soma = new vw_AritmeticaSoma(frames);
+					soma.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
 
 			}
 		});

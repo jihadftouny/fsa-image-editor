@@ -3,9 +3,11 @@ package br.fsa.views;
 import java.awt.EventQueue;
 
 import javax.swing.JDialog;
+import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -16,6 +18,9 @@ import java.awt.Insets;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import br.fsa.utils.Imagem;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
@@ -45,7 +50,7 @@ public class vw_AritmeticaSoma extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public vw_AritmeticaSoma(ArrayList<String> frames) {
+	public vw_AritmeticaSoma(ArrayList<JInternalFrame> frames) {
 		setModal(true);
 		setTitle("Soma");
 
@@ -74,14 +79,21 @@ public class vw_AritmeticaSoma extends JDialog {
 		getContentPane().add(cbb2, "cell 0 3 3 1,growx,aligny top");
 
 		for (int i = 0; i < frames.size(); i++) {
-			cbb1.addItem(frames.get(i));
-			cbb2.addItem(frames.get(i));
+			cbb1.addItem(frames.get(i).getTitle());
+			cbb2.addItem(frames.get(i).getTitle());
 		}
 
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
+				for(int i = 0; i < frames.size(); i++) {
+					if (cbb1.getSelectedItem() == frames.get(i).getTitle()) {
+//						JOptionPane.showMessageDialog(null, frames.get(i).getComponents());
+						System.out.println(frames.get(i).getComponent(i));
+						
+					}
+				}
 			}
 		});
 
