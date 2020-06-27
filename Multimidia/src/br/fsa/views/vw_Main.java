@@ -264,6 +264,48 @@ public class vw_Main {
 
 			}
 		});
+		
+		mnAritmeticaSubtracao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_AritmeticaSubtracao subtracao = new vw_AritmeticaSubtracao(frames);
+					subtracao.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnAritmeticaMultiplicacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_AritmeticaMultiplicacao multiplicacao = new vw_AritmeticaMultiplicacao(frames);
+					multiplicacao.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnAritmeticaDivisao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_AritmeticaDivisao divisao = new vw_AritmeticaDivisao(frames);
+					divisao.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
 
 	}
 }

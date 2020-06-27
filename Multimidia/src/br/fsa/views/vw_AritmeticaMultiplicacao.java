@@ -32,16 +32,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class vw_AritmeticaSoma extends JDialog {
+public class vw_AritmeticaMultiplicacao extends JDialog {
 
-	public vw_AritmeticaSoma(ArrayList<JInternalFrame> frames) {
-		setTitle("Soma");
+	public vw_AritmeticaMultiplicacao(ArrayList<JInternalFrame> frames) {
+		setTitle("Multiplicação");
 
 		setResizable(false);
 		setBounds(100, 100, 455, 207);
 		getContentPane().setLayout(new MigLayout("", "[200][center][200]", "[33px][24px][24px][44.00px][43.00px]"));
 
-		JLabel lblIntro = new JLabel("Selecione as imagens que serão somadas");
+		JLabel lblIntro = new JLabel("Selecione as imagens que serão multiplicadas");
 		lblIntro.setFont(new Font("Dialog", Font.PLAIN, 14));
 		lblIntro.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblIntro, "cell 0 0 3 1,grow");
@@ -51,7 +51,7 @@ public class vw_AritmeticaSoma extends JDialog {
 		cbb1.setToolTipText("Imagem 1");
 		getContentPane().add(cbb1, "cell 0 1 3 1,growx,aligny top");
 
-		JLabel lblOperacao = new JLabel("+");
+		JLabel lblOperacao = new JLabel("*");
 		lblOperacao.setFont(new Font("Dialog", Font.BOLD, 18));
 		lblOperacao.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblOperacao, "cell 0 2 3 1,growx,aligny top");
@@ -96,7 +96,7 @@ public class vw_AritmeticaSoma extends JDialog {
 					}
 					
 					if (imagem1 != null && imagem2 != null) {
-						Imagem result = Aritmetica.soma(imagem1, imagem2);
+						Imagem result = Aritmetica.multiplicacao(imagem1, imagem2);
 						
 						JDialog dialog = new JDialog();
 						
