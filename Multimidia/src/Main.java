@@ -34,7 +34,7 @@ public class Main {
 		try {
 			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\entrada1c.png"));
 			b = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\liliana.jpg"));
-			c = Geometricas.rotacao(a, 27, a.getW()/2, a.getH()/2);
+			c = Geometricas.escalaPixel(a, 500, 500);
 
 		}catch(IOException ioe) {
 			ioe.printStackTrace();

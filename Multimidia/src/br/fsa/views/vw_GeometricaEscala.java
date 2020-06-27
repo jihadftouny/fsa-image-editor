@@ -37,29 +37,25 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
-public class vw_GeometricaRotacao extends JDialog {
+public class vw_GeometricaEscala extends JDialog {
 	private JTextField txtX;
 	private JTextField txtY;
-	private JTextField txtAngulo;
 
-	public vw_GeometricaRotacao(ArrayList<JInternalFrame> frames) {
-		setTitle("Rotação");
+	public vw_GeometricaEscala(ArrayList<JInternalFrame> frames) {
+		setTitle("Escala");
 
 		setResizable(false);
 		setBounds(100, 100, 455, 207);
 		getContentPane()
-				.setLayout(new MigLayout("", "[200][73.00,center][-21.00][100.00,grow][54.00,grow][]", "[33px][24px][24px][44.00px][43.00px]"));
+				.setLayout(new MigLayout("", "[200][73.00,center][-21.00][61.00,grow][]", "[33px][24px][24px][44.00px][43.00px]"));
 
-		JLabel lblIntro = new JLabel("Selecione a imagem que fará a Rotação");
+		JLabel lblIntro = new JLabel("Selecione a imagem que fará a Escala");
 		lblIntro.setFont(new Font("Dialog", Font.PLAIN, 14));
 		lblIntro.setHorizontalAlignment(SwingConstants.CENTER);
-		getContentPane().add(lblIntro, "cell 0 0 6 1,grow");
+		getContentPane().add(lblIntro, "cell 0 0 5 1,grow");
 		
-		JLabel lblTexto3 = new JLabel("Ângulo");
-		getContentPane().add(lblTexto3, "cell 3 1");
-		
-		JLabel lblTexto2 = new JLabel("Ponto Y");
-		getContentPane().add(lblTexto2, "cell 5 1");
+		JLabel lblTexto2 = new JLabel("Eixo Y");
+		getContentPane().add(lblTexto2, "cell 4 1");
 
 		JComboBox<String> cbb1 = new JComboBox<String>();
 		cbb1.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -74,14 +70,11 @@ public class vw_GeometricaRotacao extends JDialog {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txtX.getText().matches("[^0-9]") || txtX.getText().isBlank() || txtX.getText().contains(" ") ||
-					txtY.getText().matches("[^0-9]") || txtY.getText().isBlank() || txtY.getText().contains(" ") ||
-					txtAngulo.getText().matches("[^0-9]") || txtAngulo.getText().isBlank() || txtAngulo.getText().contains(" ")) {
-					JOptionPane.showMessageDialog(getParent(), "Digite um número inteiro positivo");
+					txtY.getText().matches("[^0-9]") || txtY.getText().isBlank() || txtY.getText().contains(" ")) {
+					JOptionPane.showMessageDialog(getParent(), "Digite um número float positivo");
 				} else {
-					int eixoX = Integer.parseInt(txtX.getText());
-					int eixoY = Integer.parseInt(txtY.getText());
-					int Angulo = Integer.parseInt(txtAngulo.getText());
-					
+					float eixoX = Float.parseFloat(txtX.getText());
+					float eixoY = Float.parseFloat(txtY.getText());
 					if (eixoX >= 0 && eixoY >= 0) {
 						Imagem imagem1 = null;
 
@@ -98,7 +91,7 @@ public class vw_GeometricaRotacao extends JDialog {
 							}
 
 							if (imagem1 != null) {
-								Imagem result = Geometricas.rotacao(imagem1, Angulo, eixoX, eixoY);
+								Imagem result = Geometricas.escala(imagem1, eixoX, eixoY);
 
 								JDialog dialog = new JDialog();
 
@@ -113,24 +106,20 @@ public class vw_GeometricaRotacao extends JDialog {
 							}
 						}
 					} else {
-						JOptionPane.showMessageDialog(getParent(), "Digite um número inteiro positivo");
+						JOptionPane.showMessageDialog(getParent(), "Digite um número float positivo");
 					}
 				}
 
 			}
 		});
-		
-		txtAngulo = new JTextField();
-		getContentPane().add(txtAngulo, "cell 3 2,growx");
-		txtAngulo.setColumns(10);
 
 		txtX = new JTextField();
 		txtX.setHorizontalAlignment(SwingConstants.RIGHT);
-		getContentPane().add(txtX, "flowx,cell 4 2,alignx left");
+		getContentPane().add(txtX, "flowx,cell 3 2,alignx left");
 		txtX.setColumns(10);
 		
 		txtY = new JTextField();
-		getContentPane().add(txtY, "cell 5 2");
+		getContentPane().add(txtY, "cell 4 2");
 		txtY.setColumns(10);
 
 		getContentPane().add(btnOk, "cell 0 4,alignx center,aligny top");
@@ -142,12 +131,12 @@ public class vw_GeometricaRotacao extends JDialog {
 			}
 		});
 
-		getContentPane().add(btnCancelar, "cell 4 4,alignx center,aligny top");
+		getContentPane().add(btnCancelar, "cell 3 4,alignx center,aligny top");
 		
-				JLabel lblTexto = new JLabel("Ponto X");
+				JLabel lblTexto = new JLabel("Eixo X");
 				lblTexto.setHorizontalTextPosition(SwingConstants.RIGHT);
 				lblTexto.setHorizontalAlignment(SwingConstants.RIGHT);
-				getContentPane().add(lblTexto, "flowx,cell 4 1,alignx left");
+				getContentPane().add(lblTexto, "flowx,cell 3 1,alignx left");
 
 	}
 }

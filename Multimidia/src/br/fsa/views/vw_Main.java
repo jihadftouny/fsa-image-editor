@@ -184,9 +184,24 @@ public class vw_Main {
 
 		JMenuItem mnPontuaisLimiar = new JMenuItem("Limiar (Threshold)");
 		mnPontuais.add(mnPontuaisLimiar);
+		
+		JMenu mnExtras = new JMenu("Extras");
+		menuBar.add(mnExtras);
+		
+		JMenuItem mnExtrasThreshold = new JMenuItem("Threshold Regional");
+		mnExtras.add(mnExtrasThreshold);
+		
+		JMenuItem mnExtrasContraste = new JMenuItem("Contraste Boost");
+		mnExtras.add(mnExtrasContraste);
 
 		JMenu mnAjuda = new JMenu("Ajuda");
 		menuBar.add(mnAjuda);
+		
+		JMenuItem mnAjudaDocumentacao = new JMenuItem("Documentação");
+		mnAjuda.add(mnAjudaDocumentacao);
+		
+		JMenuItem mnAjudaSobre = new JMenuItem("Sobre o desenvolvedor");
+		mnAjuda.add(mnAjudaSobre);
 
 		JLabel lbCamadas = new JLabel("Camadas");
 		lbCamadas.setFont(new Font("Dialog", Font.BOLD, 24));
@@ -206,20 +221,47 @@ public class vw_Main {
 //				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			}
 		};
+		
+		JButton btnSalvar = new JButton("New button");
+		
+		JPanel panel = new JPanel();
 
 		GroupLayout groupLayout = new GroupLayout(frmEditorDeImagem.getContentPane());
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup().addGap(13).addComponent(lblFerramentas).addGap(18)
-						.addComponent(mainDesktop, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE).addGap(26)
-						.addComponent(lbCamadas).addGap(22)));
-
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup().addGap(61).addComponent(lblFerramentas))
-								.addGroup(groupLayout.createSequentialGroup().addGap(51).addComponent(lbCamadas)))
-						.addContainerGap(456, Short.MAX_VALUE))
-				.addComponent(mainDesktop, GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE));
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(13)
+							.addComponent(lblFerramentas))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(24)
+							.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)))
+					.addGap(18)
+					.addComponent(mainDesktop, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+					.addGap(26)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lbCamadas)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE))
+					.addGap(19))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(61)
+							.addComponent(lblFerramentas))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(51)
+							.addComponent(lbCamadas)))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(163, Short.MAX_VALUE))
+				.addComponent(mainDesktop, GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+		);
 
 		frmEditorDeImagem.getContentPane().setLayout(groupLayout);
 
@@ -530,6 +572,48 @@ public class vw_Main {
 					
 					vw_GeometricaRotacao rotacao = new vw_GeometricaRotacao(frames);
 					rotacao.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnGeometricaEscala.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_GeometricaEscala escala = new vw_GeometricaEscala(frames);
+					escala.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnExtrasThreshold.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_ExtrasThreshold extraThreshold = new vw_ExtrasThreshold(frames);
+					extraThreshold.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnExtrasContraste.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_ExtrasContraste extraContraste = new vw_ExtrasContraste(frames);
+					extraContraste.setVisible(true);
 				}else {
 					System.out.println("Abra pelo menos uma imagem antes!");
 				}
