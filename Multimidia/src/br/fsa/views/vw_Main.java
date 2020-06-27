@@ -313,6 +313,20 @@ public class vw_Main {
 			}
 		});
 		
+		mnAritmeticaBlending.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_AritmeticaBlending blending = new vw_AritmeticaBlending(frames);
+					blending.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
 		mnLogicaAnd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
@@ -488,6 +502,34 @@ public class vw_Main {
 					
 					vw_FiltrosMedianar medianaR = new vw_FiltrosMedianar(frames);
 					medianaR.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnGeometricaTranslacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_GeometricaTranslacao translacao = new vw_GeometricaTranslacao(frames);
+					translacao.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnGeometricaRotacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_GeometricaRotacao rotacao = new vw_GeometricaRotacao(frames);
+					rotacao.setVisible(true);
 				}else {
 					System.out.println("Abra pelo menos uma imagem antes!");
 				}

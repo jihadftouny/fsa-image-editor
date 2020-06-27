@@ -32,9 +32,9 @@ public class Main {
 		Imagem b = null;
 		Imagem c = null;
 		try {
-			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\lena.png"));
+			a = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\entrada1c.png"));
 			b = new Imagem(new File("C:\\Users\\Kana\\Desktop\\Facul\\Multimidia e Jogos Digitais\\liliana.jpg"));
-			c = Ex1.histogramAtv(a);
+			c = Geometricas.rotacao(a, 27, a.getW()/2, a.getH()/2);
 
 		}catch(IOException ioe) {
 			ioe.printStackTrace();
