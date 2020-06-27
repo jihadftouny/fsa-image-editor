@@ -20,6 +20,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
+import br.fsa.filtros.Filtros;
 import br.fsa.operacoes.Aritmetica;
 import br.fsa.operacoes.Logica;
 import br.fsa.pontuais.Pontuais;
@@ -35,23 +36,23 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
-public class vw_PontuaisLimiar extends JDialog {
+public class vw_FiltrosMedianar extends JDialog {
 	private JTextField txt1;
 
-	public vw_PontuaisLimiar(ArrayList<JInternalFrame> frames) {
-		setTitle("Limiar (Threshold)");
+	public vw_FiltrosMedianar(ArrayList<JInternalFrame> frames) {
+		setTitle("Mediana R");
 
 		setResizable(false);
 		setBounds(100, 100, 455, 207);
 		getContentPane()
 				.setLayout(new MigLayout("", "[200][141.00,center][200,grow]", "[33px][24px][24px][44.00px][43.00px]"));
 
-		JLabel lblIntro = new JLabel("Selecione a imagem que fará o Limiar");
+		JLabel lblIntro = new JLabel("Selecione a imagem que fará a Mediana R");
 		lblIntro.setFont(new Font("Dialog", Font.PLAIN, 14));
 		lblIntro.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblIntro, "cell 0 0 3 1,grow");
 
-		JLabel lblTexto = new JLabel("Limiar");
+		JLabel lblTexto = new JLabel("Raio");
 		lblTexto.setHorizontalTextPosition(SwingConstants.RIGHT);
 		lblTexto.setHorizontalAlignment(SwingConstants.RIGHT);
 		getContentPane().add(lblTexto, "cell 2 1");
@@ -69,10 +70,10 @@ public class vw_PontuaisLimiar extends JDialog {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txt1.getText().matches("[^0-9]") || txt1.getText().isBlank() || txt1.getText().contains(" ")) {
-					JOptionPane.showMessageDialog(getParent(), "Digite um número entre 0 e 255");
+					JOptionPane.showMessageDialog(getParent(), "Digite um número inteiro positivo");
 				} else {
-					int limiar = Integer.parseInt(txt1.getText());
-					if (limiar >= 0 && limiar <= 255) {
+					int r = Integer.parseInt(txt1.getText());
+					if (r >= 0) {
 						Imagem imagem1 = null;
 
 						for (int i = 0; i < frames.size(); i++) {
@@ -88,7 +89,7 @@ public class vw_PontuaisLimiar extends JDialog {
 							}
 
 							if (imagem1 != null) {
-								Imagem result = Pontuais.threshold(imagem1, limiar);
+								Imagem result = Filtros.mediana(imagem1, r);
 
 								JDialog dialog = new JDialog();
 
@@ -103,7 +104,7 @@ public class vw_PontuaisLimiar extends JDialog {
 							}
 						}
 					} else {
-						JOptionPane.showMessageDialog(getParent(), "Digite um número entre 0 e 255");
+						JOptionPane.showMessageDialog(getParent(), "Digite um número inteiro positivo");
 					}
 				}
 

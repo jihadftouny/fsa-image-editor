@@ -96,12 +96,16 @@ public class vw_Main {
 
 		JMenu mnFiltros = new JMenu("Filtros");
 		menuBar.add(mnFiltros);
+		
+		JMenuItem mnFiltrosMedia4 = new JMenuItem("Média 4");
+		mnFiltros.add(mnFiltrosMedia4);
+
 
 		JMenuItem mnFiltrosMediar = new JMenuItem("Média R");
 		mnFiltros.add(mnFiltrosMediar);
-
-		JMenuItem mnFiltrosMedia4 = new JMenuItem("Média 4");
-		mnFiltros.add(mnFiltrosMedia4);
+		
+		JMenuItem mnFiltrosMediana4 = new JMenuItem("Mediana 4");
+		mnFiltros.add(mnFiltrosMediana4);
 
 		JMenuItem mnFiltrosMedianar = new JMenuItem("Mediana R");
 		mnFiltros.add(mnFiltrosMedianar);
@@ -435,13 +439,55 @@ public class vw_Main {
 			}
 		});
 		
-		mnFiltrosMedia4.addActionListener(new ActionListener() {
+		mnPontuaisLimiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
 					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
 					
-					vw_FiltrosMedia4 media4 = new vw_FiltrosMedia4(frames);
-					media4.setVisible(true);
+					vw_PontuaisLimiar limiar = new vw_PontuaisLimiar(frames);
+					limiar.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnFiltrosMediar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_FiltrosMediar mediaR = new vw_FiltrosMediar(frames);
+					mediaR.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnFiltrosMediana4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_FiltrosMediana4 mediana4 = new vw_FiltrosMediana4(frames);
+					mediana4.setVisible(true);
+				}else {
+					System.out.println("Abra pelo menos uma imagem antes!");
+				}
+
+			}
+		});
+		
+		mnFiltrosMedianar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mainDesktop.getAllFrames() != null) { // TODO arrumar condição
+					ArrayList<JInternalFrame> frames = new ArrayList<JInternalFrame>(Arrays.asList(mainDesktop.getAllFrames()));
+					
+					vw_FiltrosMedianar medianaR = new vw_FiltrosMedianar(frames);
+					medianaR.setVisible(true);
 				}else {
 					System.out.println("Abra pelo menos uma imagem antes!");
 				}
