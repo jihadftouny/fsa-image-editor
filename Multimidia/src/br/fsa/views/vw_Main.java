@@ -9,6 +9,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +22,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLayeredPane;
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
@@ -119,6 +123,21 @@ public class vw_Main {
 
 		JMenuItem mnFiltrosMedianar = new JMenuItem("Mediana R");
 		mnFiltros.add(mnFiltrosMedianar);
+		
+		JMenuItem mnFiltrosRoberts = new JMenuItem("Roberts Cross");
+		mnFiltros.add(mnFiltrosRoberts);
+		
+		JMenuItem mnFiltrosSobel = new JMenuItem("Sobel Operator");
+		mnFiltros.add(mnFiltrosSobel);
+		
+		JMenuItem mnFiltrosCanny = new JMenuItem("Canny");
+		mnFiltros.add(mnFiltrosCanny);
+		
+		JMenuItem mnFiltrosGaussiana = new JMenuItem("Gaussian Blur");
+		mnFiltros.add(mnFiltrosGaussiana);
+		
+		JMenuItem mnFiltrosDesagucar = new JMenuItem("Máscara de desaguçar");
+		mnFiltros.add(mnFiltrosDesagucar);
 
 		JMenu mnOperacoes = new JMenu("Operações");
 		menuBar.add(mnOperacoes);
@@ -257,6 +276,19 @@ public class vw_Main {
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				JFileChooser saveFile = new JFileChooser();
+				saveFile.setDialogTitle("Salvar imagem");
+				File file = saveFile.getSelectedFile();
+				
+				Imagem imagem = new Imagem();
+				
+				try {
+					ImageIO.write((RenderedImage) imagem, "PNG", file);
+				} catch (IOException ex) {
+				
+				}
+				
 			}
 		});
 		
