@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -25,6 +26,7 @@ import javax.swing.JFileChooser;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Desktop;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -39,6 +41,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 import java.awt.Font;
 import java.awt.Graphics;
@@ -54,6 +57,13 @@ public class vw_Main {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
+		try {
+	        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	    } catch(Exception e) {
+	        System.out.println("Erro ao configurar o Look and Feel: " + e);
+	    }
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -198,9 +208,31 @@ public class vw_Main {
 		menuBar.add(mnAjuda);
 		
 		JMenuItem mnAjudaDocumentacao = new JMenuItem("Documentação");
+		mnAjudaDocumentacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+			        Desktop.getDesktop().browse(new URL("https://github.com/kanashir0/fsa-image-editor").toURI());
+			    } catch (Exception e1) {
+			        e1.printStackTrace();
+			    }
+				
+			}
+		});
 		mnAjuda.add(mnAjudaDocumentacao);
 		
 		JMenuItem mnAjudaSobre = new JMenuItem("Sobre o desenvolvedor");
+		mnAjudaSobre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+			        Desktop.getDesktop().browse(new URL("https://gkana.dev/").toURI());
+			    } catch (Exception e1) {
+			        e1.printStackTrace();
+			    }
+				
+			}
+		});
 		mnAjuda.add(mnAjudaSobre);
 
 		JLabel lbCamadas = new JLabel("Camadas");
@@ -222,7 +254,11 @@ public class vw_Main {
 			}
 		};
 		
-		JButton btnSalvar = new JButton("New button");
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 		JPanel panel = new JPanel();
 
@@ -235,9 +271,9 @@ public class vw_Main {
 							.addGap(13)
 							.addComponent(lblFerramentas))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(24)
-							.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)))
-					.addGap(18)
+							.addContainerGap()
+							.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(mainDesktop, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
 					.addGap(26)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -255,10 +291,13 @@ public class vw_Main {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(51)
 							.addComponent(lbCamadas)))
-					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(22)
+							.addComponent(btnSalvar, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(163, Short.MAX_VALUE))
 				.addComponent(mainDesktop, GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
 		);
